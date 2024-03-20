@@ -1,3 +1,11 @@
+# CODE PRACTICE TEST WEB SITE
+
+Test sample [Test Website Here!] (https://atsukocoffey.github.io/code-practice/test3.html)
+
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome,
