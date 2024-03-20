@@ -1,0 +1,41 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+h1 {
+    color: gray;
+}
+
+nav {
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(237, 170, 125);
+    color: rgb(73, 17, 17);
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+p {
+    color: gray;
+}
+
+ul {
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(237, 170, 125);
+    color: rgb(73, 17, 17);
+}
