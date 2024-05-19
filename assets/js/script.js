@@ -79,26 +79,24 @@ function handleKeyPress(event) {
   // console the pressed key
   console.log('Key pressed: ' + key);
 
-  let textDisplay = document.getElementById('text-display').textContent;
-  const currentLetter = textDisplay.charAt(0);
+  let textDisplay = document.getElementById('text-display').innerHTML;
+  let currentLetter = textDisplay.charAt(0);
   if (key === currentLetter) {
     console.log("OK");
 
     // Wrap the first letter in a span element and apply styling
-    const styledCurrentLetter = `<span style="color: red;">${currentLetter}</span>`;
+    let styledCurrentLetter = `<span style="font-weight: 600; color: yellow">${currentLetter}</span>`;
 
     // Replace the first letter in the text content with the styled first letter
-    const styledTextDisplay = textDisplay.replace(currentLetter, styledCurrentLetter);
+    let styledTextDisplay = textDisplay.replace(currentLetter, styledCurrentLetter);
 
     // Update the div with the styled text content
-    textDisplay.innerHTML = styledTextDisplay;
+    document.getElementById('text-display').innerHTML = styledTextDisplay;
 
   }
 
 
-  // Add your custom logic based on the key pressed
-  // For example, you can perform different actions for different keys
-  // Add an event listener for the keypress event on a specific element
+ 
 
 }
 
