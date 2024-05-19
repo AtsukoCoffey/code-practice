@@ -3,22 +3,22 @@ const words = [
   {
     name: 'amaebi',
     "kana": 'あまえび',
-    image: '../assets/images/sushi_amaebi.png'
+    image: 'assets/images/sushi_amaebi.png'
   },
   {
     name: 'anago',
     "kana": 'あなご',
-    image: '../assets/images/sushi_anago.png'
+    image: 'assets/images/sushi_anago.png'
   },
   {
     name: 'battera',
     "kana": 'ばってら',
-    image: '../assets/images/sushi_battera.png'
+    image: 'assets/images/sushi_battera.png'
   },
   {
     name: 'buri',
     "kana": 'ぶり',
-    image: '../assets/images/sushi_buri.png'
+    image: 'assets/images/sushi_buri.png'
   }
 ];
 
