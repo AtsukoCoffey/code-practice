@@ -28,7 +28,7 @@ const words = [
     name: 'kappa',
     "abc": 'buri',
     "kana": 'かっぱ',
-    image: 'assets/images/sushi_kappa.png'
+    image: 'assets/images/makimono_kappa.png'
   },
   {
     name: 'negitoro',
