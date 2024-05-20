@@ -132,25 +132,36 @@ function shuffle() {
     shuffledWords.push(words[Math.floor(Math.random() * words.length)]);
   }
 }
-shuffle();
+
 
 
 // Wait for the DOM to finish loading before running the game
 // Start the global time-limit and start game
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  shuffle();
   startGame();
-  setTimeout(() => {
-    finishGame()
+  setTimeout(function () {
+    finishGame();
   }, 60000);
+  // keyboard event
+  window.addEventListener('keypress', handleKeyPress);
+  // Enter key -> validate input function for mobile screen
+  let input = document.getElementById('input');
+  input.addEventListener('keypress', function (event) {
+    if (event.key === "Enter") {
+      validateInput();
+    }
+  }); // Enter key action
+
+}); //Add event listener
 
 
-});
+
 
 /**
  * Start game function
  * loop through the shuffled question
 */
-
 //Game counter
 let g = 0;
 
@@ -166,7 +177,11 @@ function startGame() {
   kanaDisplay.innerHTML = shuffledWords[g].kana;
   textDisplay.innerHTML = shuffledWords[g].name;
 
-  window.addEventListener('keypress', handleKeyPress);
+  // Set one word timer and restart
+  setInterval(function () {
+    startGame()
+  }, 10000);
+
 
 }
 
@@ -181,79 +196,69 @@ function finishGame() {
   textOver.innerHTML = "Time out";
 
   document.getElementsByTagName('main')[0].innerHTML =
-  `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : 0</li><li>Miss : 0</li><li>Success rate : 100%</li></ul></div>`;
+    `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : 0</li><li>Miss : 0</li><li>Success rate : 100%</li></ul></div>`;
 }
 
-/**
- * Define pressed key and go on to next letter
- */
-// Letter counter
+
+// Letter counter ----------------------------------------------------
 let i = 0;
 let a = 0;
+
+/**
+ * Determine pressed key, change color, add counter to go next letter
+ */
 
 function handleKeyPress(event) {
   // Access the key that was pressed
   const key = event.key;
-  let kana = detectBoin(key);
-
-
-  // console the pressed key
-  console.log('Key pressed: ' + key);
-  console.log(kana);
+  // let kana = detectBoin(key);
 
   let textDisplay = document.getElementById('text-display').innerText;
   let textOver = document.getElementById('text-overlay').innerText;
   let kanaDisplay = document.getElementById('kana-display').innerText;
- 
 
+  // Check whether match the letter
   if (key === textDisplay.charAt(i)) {
     let currentLetter = textDisplay.charAt(i);
-    console.log(currentLetter);
-    // Push matched letter
+
+    // Add matched letter to the overlay div
     let textOver = document.getElementById('text-overlay').innerText;
     textOver += currentLetter;
-    console.log(textOver);
-    console.log(currentLetter);
+    // console the pressed key
+    console.log('Key pressed: ' + key);
 
-    // Update the div with the styled text content
+    // Update the div
     document.getElementById('text-overlay').innerHTML = textOver;
 
+    // Check user input is correct for mobile user
+    validateInput();
+
+    // Go to next word
     i++;
 
-    
-  if (textOver === textDisplay) {
-    // Reset the div with empty value
-    document.getElementById('text-overlay').innerHTML = "";
-    document.getElementById('input').innerHTML = "";
-    i = 0;
-    g ++;
-    startGame();
   }
-
-  }
-
-
-  if (kana === kanaDisplay[a]) {
-      let currentKana = kanaDisplay.charAt(a);
-
-      // Wrap the first letter in a span element
-      let styledKana = `<span style="font-weight: 600; color: yellow">${currentKana}</span>`;
-
-      // Replace the current kana with the styled kana
-      let styledKanaDisplay = kanaDisplay.replace(currentKana, styledKana);
-
-      // Update the div with the styled text content
-      document.getElementById('kana-display').innerHTML = styledKanaDisplay;
-
-      a++;
-    }
-
-
-
 }
 
 
-
+/**
+   * Validate user entry when correct typing, go on to next
+   */
+function validateInput() {
+  let textDisplay = document.getElementById('text-display').innerText;
+  let textOver = document.getElementById('text-overlay').innerText;
+  let input = document.getElementById('input').innerText;
+  if (textOver === textDisplay || input === textDisplay) {
+    //counter reset
+    i = 0;
+    a = 0;
+    g++;
+    // Next word
+    startGame();
+    // Reset the div with empty value
+    document.getElementById('text-overlay').innerHTML = "";
+    document.getElementById('input').innerHTML = "";
+  }
+}
 
 
 
@@ -272,16 +277,7 @@ function detectBoin(key) {
   } else if (key === 'o') {
     return "お";
   } else {
-    return key // Return the key to identify the second key
-    // if (key === 'k') {
-    //   window.addEventListener('keypress', secondKeyOfK);
-    // } else if (key === 's') {
-    //   window.addEventListener('keypress', secondKeyOfS);
-    // } else if (key === 't') {
-    //   window.addEventListener('keypress', secondKeyOfT);
-    // } else if (key === 'n') {
-    //   window.addEventListener('keypress', secondKeyOfN);
-    // }
+    return key
   }
 };
 function secondKeyOfK(event) {
