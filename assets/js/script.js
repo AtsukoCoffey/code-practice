@@ -179,6 +179,9 @@ function finishGame() {
 
   textDisplay.innerHTML = "Time out";
   textOver.innerHTML = "Time out";
+
+  document.getElementsByTagName('main')[0].innerHTML =
+  `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : 0</li><li>Miss : 0</li><li>Success rate : 100%</li></ul></div>`;
 }
 
 /**
@@ -217,15 +220,18 @@ function handleKeyPress(event) {
 
     i++;
 
-  }
-
+    
   if (textOver === textDisplay) {
-    // Update the div with the styled text content
+    // Reset the div with empty value
     document.getElementById('text-overlay').innerHTML = "";
+    document.getElementById('input').innerHTML = "";
     i = 0;
     g ++;
     startGame();
   }
+
+  }
+
 
   if (kana === kanaDisplay[a]) {
       let currentKana = kanaDisplay.charAt(a);
