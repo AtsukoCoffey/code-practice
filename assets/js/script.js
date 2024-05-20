@@ -2,29 +2,256 @@
 const words = [
   {
     name: 'amaebi',
+    "abc": 'amaebi',
     "kana": 'あまえび',
     image: 'assets/images/sushi_amaebi.png'
   },
   {
     name: 'anago',
+    "abc": 'anago',
     "kana": 'あなご',
     image: 'assets/images/sushi_anago.png'
   },
   {
     name: 'battera',
+    "abc": 'battera',
     "kana": 'ばってら',
     image: 'assets/images/sushi_battera.png'
   },
   {
     name: 'buri',
+    "abc": 'buri',
     "kana": 'ぶり',
     image: 'assets/images/sushi_buri.png'
-  }
+  },
+  {
+    name: 'kappa',
+    "abc": 'buri',
+    "kana": 'かっぱ',
+    image: 'assets/images/sushi_burikappa.png'
+  },
+  {
+    name: 'negitoro',
+    "abc": 'buri',
+    "kana": 'ねぎとろ',
+    image: 'assets/images/sushi_negitoro.png'
+  },
+  {
+    name: 'takuwan',
+    "abc": 'buri',
+    "kana": 'たくあん',
+    image: 'assets/images/sushi_takuwan.png'
+  },
+  {
+    name: 'chutoro',
+    "abc": 'buri',
+    "kana": 'ちゅうとろ',
+    image: 'assets/images/sushi_chutoro.png'
+  },
+  {
+    name: 'ebi',
+    "abc": 'buri',
+    "kana": 'えび',
+    image: 'assets/images/sushi_ebi.png'
+  },
+  {
+    name: 'hamachi',
+    "abc": 'buri',
+    "kana": 'はまち',
+    image: 'assets/images/sushi_hamachi.png'
+  },
+  {
+    name: 'hanba-gu',
+    "abc": 'buri',
+    "kana": 'はんばーぐ',
+    image: 'assets/images/sushi_hamburg.png'
+  },
+  {
+    name: 'hotate',
+    "abc": 'buri',
+    "kana": 'ほたて',
+    image: 'assets/images/sushi_hotate.png'
+  },
+  {
+    name: 'ika',
+    "abc": 'buri',
+    "kana": 'いか',
+    image: 'assets/images/sushi_ika.png'
+  },
+  {
+    name: 'ikura',
+    "abc": 'buri',
+    "kana": 'いくら',
+    image: 'assets/images/sushi_ikura.png'
+  },
+  {
+    name: 'katsuo',
+    "abc": 'buri',
+    "kana": 'かつお',
+    image: 'assets/images/sushi_katsuo.png'
+  },
+  {
+    name: 'sake',
+    "abc": 'buri',
+    "kana": 'さけ',
+    image: 'assets/images/sushi_salmon.png'
+  },
+  {
+    name: 'tai',
+    "abc": 'buri',
+    "kana": 'たい',
+    image: 'assets/images/sushi_tai.png'
+  },
+  {
+    name: 'tako',
+    "abc": 'buri',
+    "kana": 'たこ',
+    image: 'assets/images/sushi_tako.png'
+  },
+  {
+    name: 'tamago',
+    "abc": 'buri',
+    "kana": 'たまご',
+    image: 'assets/images/sushi_tamago.png'
+  },
+  {
+    name: 'inarizushi',
+    "abc": 'buri',
+    "kana": 'いなりずし',
+    image: 'assets/images/food_inarizushi_set.png'
+  },
 ];
+
+
+
+// Shuffle the array object
+let shuffledWords = [];
+
+function shuffle() {
+  for (word of words) {
+    shuffledWords.push(words[Math.floor(Math.random() * words.length)]);
+  }
+}
+shuffle();
+
+
+// Wait for the DOM to finish loading before running the game
+// Start the global time-limit and start game
+document.addEventListener("DOMContentLoaded", () => {
+  startGame();
+  setTimeout(() => {
+    finishGame()
+  }, 60000);
+
+
+});
+
+/**
+ * Start game function
+ * loop through the shuffled question
+*/
+
+//Game counter
+let g = 0;
+
+function startGame() {
+  // Get div for display questions
+  let imageDisplay = document.getElementById('img-display');
+  let textDisplay = document.getElementById('text-display');
+  let kanaDisplay = document.getElementById('kana-display');
+  let textOver = document.getElementById('text-overlay');
+
+  imageDisplay.innerHTML = '<img src="' + shuffledWords[g].image + '" width="100" height="100" alt="Question word">';
+
+  kanaDisplay.innerHTML = shuffledWords[g].kana;
+  textDisplay.innerHTML = shuffledWords[g].name;
+
+  window.addEventListener('keypress', handleKeyPress);
+
+}
+
+/**
+ * Finish game function
+ */
+function finishGame() {
+  let textDisplay = document.getElementById('text-display');
+  textDisplay.innerHTML = "Time out";
+}
+
+/**
+ * Define pressed key and go on to next letter
+ */
+// Letter counter
+let i = 0;
+let a = 0;
+
+function handleKeyPress(event) {
+  // Access the key that was pressed
+  const key = event.key;
+  let kana = detectBoin(key);
+
+
+  // console the pressed key
+  console.log('Key pressed: ' + key);
+  console.log(kana);
+
+  let textDisplay = document.getElementById('text-display').innerText;
+  let textOver = document.getElementById('text-overlay').innerText;
+  let kanaDisplay = document.getElementById('kana-display').innerText;
+ 
+
+  if (key === textDisplay.charAt(i)) {
+    let currentLetter = textDisplay.charAt(i);
+    console.log(currentLetter);
+    // Push matched letter
+    let textOver = document.getElementById('text-overlay').innerText;
+    textOver += currentLetter;
+    console.log(textOver);
+    console.log(currentLetter);
+
+    // Update the div with the styled text content
+    document.getElementById('text-overlay').innerHTML = textOver;
+
+    i++;
+
+  }
+
+  if (textOver === textDisplay) {
+    // Update the div with the styled text content
+    document.getElementById('text-overlay').innerHTML = "";
+    i = 0;
+    g ++;
+    startGame();
+  }
+
+  if (kana === kanaDisplay[a]) {
+      let currentKana = kanaDisplay.charAt(a);
+
+      // Wrap the first letter in a span element
+      let styledKana = `<span style="font-weight: 600; color: yellow">${currentKana}</span>`;
+
+      // Replace the current kana with the styled kana
+      let styledKanaDisplay = kanaDisplay.replace(currentKana, styledKana);
+
+      // Update the div with the styled text content
+      document.getElementById('kana-display').innerHTML = styledKanaDisplay;
+
+      a++;
+    }
+
+
+
+}
+
+
+
+
+
+
 
 // kana if statement
 
-function detectKana(key) {
+function detectBoin(key) {
   if (key === 'a') {
     return "あ";
   } else if (key === 'i') {
@@ -35,14 +262,17 @@ function detectKana(key) {
     return "え";
   } else if (key === 'o') {
     return "お";
-  } else if (key === 'k') {
-    window.addEventListener('keypress', secondKeyOfK);
-  } else if (key === 's') {
-    window.addEventListener('keypress', secondKeyOfS);
-  } else if (key === 't') {
-    window.addEventListener('keypress', secondKeyOfT);
-  } else if (key === 'n') {
-    window.addEventListener('keypress', secondKeyOfN);
+  } else {
+    return key // Return the key to identify the second key
+    // if (key === 'k') {
+    //   window.addEventListener('keypress', secondKeyOfK);
+    // } else if (key === 's') {
+    //   window.addEventListener('keypress', secondKeyOfS);
+    // } else if (key === 't') {
+    //   window.addEventListener('keypress', secondKeyOfT);
+    // } else if (key === 'n') {
+    //   window.addEventListener('keypress', secondKeyOfN);
+    // }
   }
 };
 function secondKeyOfK(event) {
@@ -57,6 +287,8 @@ function secondKeyOfK(event) {
     return "け";
   } else if (secondKey === 'o') {
     return "こ";
+  } else {
+    return X
   }
 };
 function secondKeyOfS(event) {
@@ -101,107 +333,3 @@ function secondKeyOfN(event) {
     return "の";
   }
 };
-
-
-// Shuffle the array object
-let shuffledWords = [];
-
-function shuffle() {
-  for (word of words) {
-    shuffledWords.push(words[Math.floor(Math.random() * words.length)]);
-  }
-}
-shuffle();
-
-
-// Wait for the DOM to finish loading before running the game
-// Start the global time limit and start game loop
-document.addEventListener("DOMContentLoaded", () => {
-  startGame();
-  setTimeout(() => {
-    finishGame()
-  }, 60000);
-
-
-});
-
-/**
- * Start game function
- * loop through the shuffled question
-*/
-function startGame() {
-  // Get div for display questions
-  let imageDisplay = document.getElementById('img-display');
-  let textDisplay = document.getElementById('text-display');
-  let kanaDisplay = document.getElementById('kana-display');
-
-  imageDisplay.innerHTML = '<img src="' + shuffledWords[0].image + '" width="100" height="100" alt="Question word">';
-
-  kanaDisplay.innerHTML = shuffledWords[0].kana;
-  textDisplay.innerHTML = shuffledWords[0].name;
-
-}
-
-/**
- * Finish game function
- */
-function finishGame() {
-  let textDisplay = document.getElementById('text-display');
-  textDisplay.innerHTML = "Finished!";
-}
-
-/**
- * Detect key and change color
- */
-function handleKeyPress(event) {
-  // Access the key that was pressed
-  const key = event.key;
-  let kana = detectKana(key);
-
-  // console the pressed key
-  console.log('Key pressed: ' + key);
-  console.log(kana);
-
-  let textDisplay = document.getElementById('text-display').innerText;
-  let kanaDisplay = document.getElementById('kana-display').innerText;
-
-  let i = 0;
-  if (kana === kanaDisplay[i]) {
-    let currentKana = kanaDisplay.charAt(i);
-
-    // Wrap the first letter in a span element
-    let styledKana = `<span style="font-weight: 600; color: yellow">${currentKana}</span>`;
-
-    // Replace the current kana with the styled kana
-    let styledKanaDisplay = kanaDisplay.replace(currentKana, styledKana);
-
-    // Update the div with the styled text content
-    document.getElementById('kana-display').innerHTML = styledKanaDisplay;
-
-    i++;
-  }
-
-  // //Loop through the current word
-  // for (let i = 0; i < textDisplay.length; i++) {
-
-
-  //   let currentLetter = textDisplay.charAt(i);
-  //   if (key === currentLetter) {
-
-  //     // Wrap the first letter in a span element and apply styling
-  //     let styledCurrentLetter = `<span style="font-weight: 600; color: yellow">${currentLetter}</span>`;
-
-  //     // Replace the current letter in the text content with the styled first letter
-  //     let styledTextDisplay = textDisplay.replace(currentLetter, styledCurrentLetter);
-
-  //     // Update the div with the styled text content
-  //     document.getElementById('text-display').innerHTML = styledTextDisplay;
-
-  //   }
-
-  // }
-
-
-}
-
-window.addEventListener('keypress', handleKeyPress);
