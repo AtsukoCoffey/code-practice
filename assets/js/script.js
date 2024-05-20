@@ -28,19 +28,19 @@ const words = [
     name: 'kappa',
     "abc": 'buri',
     "kana": 'かっぱ',
-    image: 'assets/images/sushi_burikappa.png'
+    image: 'assets/images/sushi_kappa.png'
   },
   {
     name: 'negitoro',
     "abc": 'buri',
     "kana": 'ねぎとろ',
-    image: 'assets/images/sushi_negitoro.png'
+    image: 'assets/images/makimono_negitoro.png'
   },
   {
     name: 'takuwan',
     "abc": 'buri',
     "kana": 'たくあん',
-    image: 'assets/images/sushi_takuwan.png'
+    image: 'assets/images/makimono_takuwan.png'
   },
   {
     name: 'chutoro',
@@ -64,7 +64,7 @@ const words = [
     name: 'hanba-gu',
     "abc": 'buri',
     "kana": 'はんばーぐ',
-    image: 'assets/images/sushi_hamburg.png'
+    image: 'assets/images/sushi_hamburg_tare.png'
   },
   {
     name: 'hotate',
@@ -175,7 +175,10 @@ function startGame() {
  */
 function finishGame() {
   let textDisplay = document.getElementById('text-display');
+  let textOver = document.getElementById('text-overlay');
+
   textDisplay.innerHTML = "Time out";
+  textOver.innerHTML = "Time out";
 }
 
 /**
