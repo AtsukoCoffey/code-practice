@@ -129,7 +129,7 @@ let shuffledWords = [];
 
 function shuffle() {
   for (word of words) {
-    shuffledWords.push(words[Math.floor(Math.random() * words.length)]);
+    shuffledWords.push(words[Math.floor(Math.random() * 80)]);
   }
 }
 
