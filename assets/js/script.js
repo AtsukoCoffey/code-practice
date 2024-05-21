@@ -144,26 +144,33 @@ document.addEventListener("DOMContentLoaded", function () {
     finishGame();
   }, 60000);
   // keyboard event
-  window.addEventListener('keypress', handleKeyPress);
+  // window.addEventListener('keypress', handleKeyPress);
   // Enter key -> validate input function for mobile screen
   let input = document.getElementById('input');
-  input.addEventListener('keypress', function (event) {
-    if (event.key === "Enter") {
-      validateInput();
-    }
-  }); // Enter key action
+  input.addEventListener('keypress', handleKeyPress)
+  // input.addEventListener('keypress', function (event) {
+
+
+  // }); // Enter key action
 
 }); //Add event listener
 
 
+
+// Game counter = Number of correct answer
+let g = 0;
+// Letter counter : correct / mistake
+let c = 0;
+let m = 0;
+// Success rate : correct / correct + mistake * 100
+let successRate = Math.floor(( c / (c + m) )* 100); 
 
 
 /**
  * Start game function
  * loop through the shuffled question
 */
-//Game counter = Number of correct answer
-let g = 0;
+
 
 function startGame() {
   // Get div for display questions
@@ -177,7 +184,7 @@ function startGame() {
   kanaDisplay.innerHTML = shuffledWords[g].kana;
   textDisplay.innerHTML = shuffledWords[g].name;
 
-  
+
   // Reset the div with empty value
   document.getElementById('text-overlay').innerHTML = "";
   document.getElementById('input').value = "";
@@ -198,9 +205,14 @@ function finishGame() {
   textDisplay.innerHTML = "Time out";
   textOver.innerHTML = "Time out";
 
+      // typing sound
+      document.getElementById('ending-sound').play();
+  
+
   document.getElementsByTagName('main')[0].innerHTML =
-    `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : ${g}</li><li>Miss : 0</li><li>Success rate : 100%</li></ul></div>`;
+    `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : ${g}</li><li>Miss : 0</li><li>Success rate : ${successRate}%</li></ul></div>`;
 }
+
 
 
 // Letter counter ----------------------------------------------------
@@ -227,20 +239,35 @@ function handleKeyPress(event) {
     // Add matched letter to the overlay div
     let textOver = document.getElementById('text-overlay').innerText;
     textOver += currentLetter;
-    // console the pressed key
-    console.log('Key pressed: ' + key);
 
     // Update the div
     document.getElementById('text-overlay').innerHTML = textOver;
 
-    // Check user input is correct for mobile user
+    // typing sound
+    document.getElementById('type-sound').play();
 
     // Go to next word
     i++;
+    c++;
 
+    // Check user input is correct for mobile user
+  } else {
+    // wrong typing sound
+    document.getElementById('hit-sound').play();
+
+    // Mistake counter
+    m++;
   }
+
+
+  if (key === "Enter") {
+    validateInput();
+  }
+  // console the pressed key
+  console.log('Key pressed: ' + key);
+
 }
-validateInput();
+
 
 
 /**
