@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * Start game function
  * loop through the shuffled question
 */
-//Game counter
+//Game counter = Number of correct answer
 let g = 0;
 
 function startGame() {
@@ -170,19 +170,22 @@ function startGame() {
   let imageDisplay = document.getElementById('img-display');
   let textDisplay = document.getElementById('text-display');
   let kanaDisplay = document.getElementById('kana-display');
-  let textOver = document.getElementById('text-overlay');
+  // let textOver = document.getElementById('text-overlay');
 
   imageDisplay.innerHTML = '<img src="' + shuffledWords[g].image + '" width="100" height="100" alt="Question word">';
 
   kanaDisplay.innerHTML = shuffledWords[g].kana;
   textDisplay.innerHTML = shuffledWords[g].name;
 
+  
+  // Reset the div with empty value
+  document.getElementById('text-overlay').innerHTML = "";
+  document.getElementById('input').value = "";
+
   // Set one word timer and restart
-  setInterval(function () {
-    startGame()
-  }, 10000);
-
-
+  // setTimeout(function () {
+  //   startGame();
+  // }, 10000);
 }
 
 /**
@@ -196,7 +199,7 @@ function finishGame() {
   textOver.innerHTML = "Time out";
 
   document.getElementsByTagName('main')[0].innerHTML =
-    `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : 0</li><li>Miss : 0</li><li>Success rate : 100%</li></ul></div>`;
+    `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : ${g}</li><li>Miss : 0</li><li>Success rate : 100%</li></ul></div>`;
 }
 
 
@@ -214,8 +217,8 @@ function handleKeyPress(event) {
   // let kana = detectBoin(key);
 
   let textDisplay = document.getElementById('text-display').innerText;
-  let textOver = document.getElementById('text-overlay').innerText;
-  let kanaDisplay = document.getElementById('kana-display').innerText;
+  // let textOver = document.getElementById('text-overlay').innerText;
+  // let kanaDisplay = document.getElementById('kana-display').innerText;
 
   // Check whether match the letter
   if (key === textDisplay.charAt(i)) {
@@ -231,13 +234,13 @@ function handleKeyPress(event) {
     document.getElementById('text-overlay').innerHTML = textOver;
 
     // Check user input is correct for mobile user
-    validateInput();
 
     // Go to next word
     i++;
 
   }
 }
+validateInput();
 
 
 /**
@@ -254,9 +257,7 @@ function validateInput() {
     g++;
     // Next word
     startGame();
-    // Reset the div with empty value
-    document.getElementById('text-overlay').innerHTML = "";
-    document.getElementById('input').innerHTML = "";
+
   }
 }
 
