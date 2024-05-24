@@ -279,7 +279,8 @@ window.addEventListener('keypress', handleKeyPress);
 input.addEventListener('input', validateInput);
 // Add form element submit
 
-let form = document.getElementById('form').addEventListener('submit', validateInput);
+let form = document.getElementById('form');
+form.addEventListener('submit', validateInput);
 
 // // Add event to input box -> validate and enter button action
 // input.addEventListener('keypress', handleKeyPress);
