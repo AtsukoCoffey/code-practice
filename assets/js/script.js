@@ -278,7 +278,8 @@ window.addEventListener('keypress', handleKeyPress);
 // Submit for validate input - mobile device
 input.addEventListener('input', validateInput);
 // Add form element submit
-document.getElementById('form').addEventListener('submit', validateInput)
+
+let form = document.getElementById('form').addEventListener('submit', validateInput);
 
 // // Add event to input box -> validate and enter button action
 // input.addEventListener('keypress', handleKeyPress);
