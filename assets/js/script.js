@@ -272,11 +272,14 @@ function finishGame() {
     `<div><p>Menu</p><ul><li>Sushi menu</li><li>Travel in Japan</li><li>Greetings</li></ul></div><div><p>Score</p><ul><li>Clear : ${gameCounter}</li><li>Miss : 0</li><li>Success rate : %</li></ul></div>`;
 }
 
+///////////////////////////////////////////   All the other codes
 
 // keyboard window event
 window.addEventListener('keypress', handleKeyPress);
 // Submit for validate input - mobile device
 input.addEventListener('input', validateInput);
+// Add form element submit
+document.getElementById('form').addEventListener('submit', validateInput)
 
 // // Add event to input box -> validate and enter button action
 // input.addEventListener('keypress', handleKeyPress);
