@@ -276,14 +276,13 @@ function finishGame() {
 // keyboard window event
 window.addEventListener('keypress', handleKeyPress);
 // Submit for validate input - mobile device
-input.addEventListener('input', validateInput);
+input.addEventListener('click', validateInput);
 // Add form element submit
 
-let form = document.getElementById('form');
-form.addEventListener('touchend', validateInput);
+let submitForm = document.getElementById('submit-form');
+submitForm.addEventListener('touchend', validateInput);
 
-// // Add event to input box -> validate and enter button action
-// input.addEventListener('keypress', handleKeyPress);
+
 
 // Wait for the DOM to finish loading before running the game
 // Start the global time-limit and start game
