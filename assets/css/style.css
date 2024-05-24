@@ -1,0 +1,254 @@
+/* Google font import */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Swanky+and+Moo+Moo&family=Yomogi&family=Warnes&display=swap');
+
+/* Asterisk wildcard selector to override default styles added by the browser */
+* {
+  padding: 0;
+  margin: 0;
+  margin-block: 0;
+  box-sizing: border-box;
+  /* border: 1px solid #F27272; */
+}
+
+/* General structure styles : body ~ footer   */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* PP2 styles */
+  text-align: center;
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-size: 1.3rem;
+  font-style: normal;
+  letter-spacing: 0.2rem;
+  color: #594B46;
+}
+
+header {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  background: #F2F2F2 url('../images/head-logo.png') center top/280px no-repeat;
+}
+
+main {
+  margin-top: 130px;
+  flex: 1 0 auto;
+  background: #F2F2F2 url("../images/kaitenzushi1.webp") center top/400px no-repeat;
+  width: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  text-align: center;
+}
+
+footer li {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* Headings styles : h1 ~ h3 ///////////////////////////////*/
+h1,
+h2 {
+  color: #594B46;
+}
+
+h1 {
+  font-family: "Warnes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 85px;
+  margin-right: 2rem;
+  font-size: 145%;
+  letter-spacing: 2px;
+  line-height: 90%;
+}
+
+h2 {
+  font-family: "Swanky and Moo Moo", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: medium;
+}
+
+h3 {
+  color: #F2F2F2;
+}
+
+h4 {
+  color: #8C8684;
+  color: #F27272;
+  color: #0D0D0D;
+}
+
+/* Nav dropdown toggle button - CodeInstitute learning material */
+nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  padding-right: 0.8rem;
+}
+
+#nav-toggle:checked~nav {
+  display: block;
+  color: #594B46;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  font-size: 1.8rem;
+  padding-top: 80px;
+  padding-right: 0.8rem;
+  color: #594B46;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+/* General element styles //////////////////////////////////*/
+
+input {
+  width: 200px;
+  height: 100px;
+  color: #0D0D0D;
+  background-color: #F2F2F2;
+  text-align: center;
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-size: 1.3rem;
+  font-style: normal;
+  letter-spacing: 0.2rem;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #594B46;
+}
+
+a:visited {
+  color: #594B46;
+}
+
+a:hover {
+  color: #F27272;
+}
+
+/* Id styles ///////////////////////////////////////////////*/
+#social-networks {
+  display: block;
+}
+
+#social-networks li {
+  display: inline-block;
+}
+
+#menu {
+  font-size: 95%;
+  letter-spacing: 2px;
+  line-height: 155%;
+}
+
+#game {
+  width: 100%;
+  background: #F2F2F2 url(../images/kaitenzushi0.webp) center top/400px no-repeat;
+}
+
+#img-display {
+  min-height: 150px;
+}
+
+#text-display {
+  position: absolute;
+  top: 45px;
+  left: 15%;
+  width: 100%;
+  color: #F2F2F2;
+  padding-top: 0.3rem;
+  letter-spacing: 0.4rem;
+  text-align: left;
+}
+
+#text-overlay {
+  position: absolute;
+  top: 45px;
+  left: 15%;
+  width: 100%;
+  z-index: 99;
+  color: #f0bc11;
+  padding-top: 0.3rem;
+  letter-spacing: 0.4rem;
+  text-align: left;
+}
+
+#kana-display {
+  position: absolute;
+  top: 5px;
+  left: 15%;
+  width: 100%;
+  color: #F2F2F2;
+  padding-top: 0.8rem;
+  text-align: left;
+}
+
+#kana-overlay {
+  position: absolute;
+  top: 5px;
+  left: 15%;
+  width: 100%;
+  z-index: 99;
+  color: #f0bc11;
+  padding-top: 0.8rem;
+  text-align: left;
+}
+
+
+#input {
+  width: 100%;
+  height: 100px;
+  color: #0D0D0D;
+  background-color: #F2F2F2;
+}
+/* Class styles ////////////////////////////////////////////*/
+.kana {
+  font-family: "Yomogi", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-orientation: sideways;
+}
+
+.game-display {
+  height: 100px;
+  background-color: rgb(13, 13, 13, .7);
+}
+
+.text-box {
+  display: block;
+  position: relative;
+  width: 150px;
+  bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Media query: General smart phone (390px and up) */
+@media screen and (min-width:390px) {}
+
+/* Media query: General smart phone (768px and up) */
+@media screen and (min-width:768px) {}
+
+/* Media query: General smart phone (1024px and up) */
+@media screen and (min-width:1024px) {}
