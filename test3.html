@@ -2,48 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PP2 test & practice</title>
-    <link rel="stylesheet" href="assets/css/index.css">
+  <meta charset="UTF-8">
+  <!-- For older versions of IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Additional Meta tags -->
+  <meta name="description"
+    content="Japanese keyboard typing game - Type quickly or you'll miss your favourite dishes! Games are a great way to learn Japanese!!">
+  <meta name="keyword" content="Sushi, Kaitenzushi, Japan, Japanese food, Typing game, Nihongo">
+  <meta name="author" content="Atsuko Coffey">
+  <!-- Title -->
+  <title>Kaitenzushi - Japanese typing game</title>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon-sushiya-apple-touch.webp">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-sushiya-32.webp">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <header>
-        <h1>PP2 test & practice</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="test1.html">test1</a></li>
-                <li><a href="test2.html">test2</a></li>
-                <li><a href="test3.html">PP2 test & practice</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+  <!-- Header -->
+  <header>
+    <h1>Kaiten Zushi</h1>
+    <input type="checkbox" name="nav-toggle" id="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label"><i class="fa-solid fa-user-gear"
+        title="Setting & Contact"></i></label>
+    <nav>
+      <ul id="menu">
+        <li>Setting</li>
+        <li>Contact</li>
+        <li><audio src="assets/sounds/audio_9955-typing9.wav" id="type-sound"></audio>
+          <audio src="assets/sounds/audio_23261-mouseclick.wav" id="click
+    -sound"></audio>
+          <audio src="assets/sounds/audio_1328-kotsu.wav" id="hit-sound"></audio>
+          <audio src="assets/sounds/audio_22292-coin.wav" id="clear-sound"></audio>
+          <audio src="assets/sounds/audio_12948-wafu-eyecatch.wav" id="ending-sound"></audio>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Main -->
+  <main>
+    <!-- Layer of div : Modal -->
+    <div>
+      <!-- Game div -->
+      <div id="game">
         <div id="img-display">
-            <p id="time-left"></p>
+          <p id="time-left"></p>
         </div>
         <div class="game-display">
-            <div class="text-box">
-                <div id="kana-display"></div>
-                <div id="kana-overlay"></div>
-                <div id="text-display"></div>
-                <div id="text-overlay"></div>
-            </div>
+          <div class="text-box">
+            <div id="kana-display" class="kana"></div>
+            <div id="kana-overlay" class="kana"></div>
+            <div id="text-display"></div>
+            <div id="text-overlay"></div>
+          </div>
         </div>
-        <input type="text" id="input" placeholder="Input here!" autocomplete="off">
-        <div contenteditable="true"></div>
-    </main>
-    <audio src="assets/sounds/audio_9955-typing9.wav" id="type-sound"></audio>
-    <audio src="assets/sounds/audio_23261-mouseclick.wav" id="click
-    -sound"></audio>
-    <audio src="assets/sounds/audio_1328-kotsu.wav" id="hit-sound"></audio>
-    <audio src="assets/sounds/audio_22292-coin.wav" id="clear-sound"></audio>
-    <audio src="assets/sounds/audio_12948-wafu-eyecatch.wav" id="ending-sound"></audio>
-    <footer>Contact xxxxx</footer>
-    <script src="assets/js/script.js"></script>
-    <script src="https://kit.fontawesome.com/c9e3fbf0ad.js" crossorigin="anonymous"></script>
+        <form id="challenge-form" autocomplete="off" method="POST">
+          <input type="text" id="input" placeholder="Input here!" autocomplete="off">
+        </form>
+      </div>
+      <!-- Entry and setting div -->
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <ul id="social-networks">
+      <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"
+          aria-label="Visit our Facebook page (opens in a new tab)"><i class="fa-brands fa-square-facebook"
+            title="Visit our Facebook page (opens in a new tab)"></i></a></li>
+      <li><a href="https://twitter.com/" target="_blank" rel="noopener"
+          aria-label="Visit our X-Twitter page (opens in a new tab)"><i class="fa-brands fa-twitter"
+            title="Visit our X-Twitter page (opens in a new tab)"></i></a></li>
+      <li><a href="https://www.youtube.com/" target="_blank" rel="noopener"
+          aria-label="Visit our YouTube page (opens in a new tab)"><i class="fa-brands fa-youtube"
+            title="Visit our YouTube page (opens in a new tab)"></i></a></li>
+      <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"
+          aria-label="Visit our instagram page (opens in a new tab)"><i class="fa-brands fa-instagram"
+            title="Visit our instagram page (opens in a new tab)"></i></a></li>
+    </ul>
+  </footer>
+  <i class="fa-solid fa-volume-low" title="Adjust volume"></i>
+  <script src="assets/js/script.js"></script>
+  <script src="https://kit.fontawesome.com/c9e3fbf0ad.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
