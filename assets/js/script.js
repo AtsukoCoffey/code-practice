@@ -277,9 +277,8 @@ function finishGame() {
 window.addEventListener('keypress', handleKeyPress);
 // mobile device touch start event 
 input.addEventListener('touchstart', handleKeyPress);
-// Add form element submit
-let form = document.getElementById('form');
-form.addEventListener('touchend', validateInput);
+// Add touchend
+input.addEventListener('touchend', validateInput);
 
 
 
