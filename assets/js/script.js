@@ -276,7 +276,7 @@ function finishGame() {
 // keyboard window event
 window.addEventListener('keypress', handleKeyPress);
 // Submit for validate input - mobile device
-input.addEventListener('click', validateInput);
+input.addEventListener('submit', handleKeyPress);
 // Add form element submit
 
 let submitForm = document.getElementById('submit-form');
