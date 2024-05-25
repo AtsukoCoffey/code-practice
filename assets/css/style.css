@@ -243,9 +243,9 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-.submit-button {
+/* .submit-button {
   display: none;
-}
+} */
 
 /* Media query: General smart phone (390px and up) */
 @media screen and (min-width:390px) {}

@@ -279,8 +279,8 @@ window.addEventListener('keypress', handleKeyPress);
 input.addEventListener('submit', validateInput);
 // Add form element submit
 
-let submitForm = document.getElementById('submit-form');
-submitForm.addEventListener('touchend', validateInput);
+let form = document.getElementById('form');
+form.addEventListener('touchend', validateInput);
 
 
 
