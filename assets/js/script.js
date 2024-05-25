@@ -275,10 +275,9 @@ function finishGame() {
 
 // keyboard window event
 window.addEventListener('keypress', handleKeyPress);
-// Submit for validate input - mobile device
-input.addEventListener('submit', validateInput);
+// mobile device touch start event 
+input.addEventListener('touchstart', handleKeyPress);
 // Add form element submit
-
 let form = document.getElementById('form');
 form.addEventListener('touchend', validateInput);
 
